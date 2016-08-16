@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @author xueaohui
  */
-@CrossOrigin
+@CrossOrigin("http://127.0.0.1")
 @RestController
 @RequestMapping("/api")
 public class RestDemoController {
