@@ -1,43 +1,24 @@
-package com.github.wuhulala;
+#spring cors#
+>spring 针对 跨域调用的解决方案
 
-import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.alibaba.fastjson.serializer.ValueFilter;
-import com.alibaba.fastjson.support.config.FastJsonConfig;
-import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScans;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+[点击查看官方文档](https://spring.io/blog/2015/06/08/cors-support-in-spring-framework)
 
-import java.util.List;
-
-/**
- * @author xueaohui
- */
+```java
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.github.wuhulala")
 public class AppConfig  extends WebMvcConfigurerAdapter {
-
-    /**
-     * 设置fastjson转换json
-     * @param converters 转换器
-     */
+    
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        //新建一个转换器
         FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
 
-        FastJsonConfig fastJsonConfig = new FastJsonConfig();
+        FastJsonConfig fastJsonConfig = new FastJsonConfig();//4
         fastJsonConfig.setSerializerFeatures(
                 SerializerFeature.PrettyFormat,
                 SerializerFeature.WriteClassName,
                 SerializerFeature.WriteMapNullValue
         );
-        //设置null 为 ""
         ValueFilter valueFilter = new ValueFilter() {//5
             //o 是class
             //s 是key值
@@ -52,9 +33,10 @@ public class AppConfig  extends WebMvcConfigurerAdapter {
         fastJsonConfig.setSerializeFilters(valueFilter);
 
         converter.setFastJsonConfig(fastJsonConfig);
-        //添加转换器
+
         converters.add(converter);
     }
 
 
 }
+```
