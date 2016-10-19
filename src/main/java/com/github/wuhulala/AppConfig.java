@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 import java.util.List;
 
@@ -20,10 +22,11 @@ import java.util.List;
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.github.wuhulala")
-public class AppConfig  extends WebMvcConfigurerAdapter {
+public class AppConfig extends WebMvcConfigurerAdapter {
 
     /**
      * 设置fastjson转换json
+     *
      * @param converters 转换器
      */
     @Override
@@ -43,7 +46,7 @@ public class AppConfig  extends WebMvcConfigurerAdapter {
             //s 是key值
             //o1 是value值
             public Object process(Object o, String s, Object o1) {
-                if (null == o1){
+                if (null == o1) {
                     o1 = "";
                 }
                 return o1;
