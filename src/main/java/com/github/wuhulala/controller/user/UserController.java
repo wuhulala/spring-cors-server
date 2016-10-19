@@ -19,6 +19,11 @@ import java.util.List;
 public class UserController {
 
     @RequestMapping(value = "/")
+    public String index(){
+        return "user/session";
+    }
+
+    @RequestMapping(value = "/home")
     public String home(Model model) {
 
         //create model
