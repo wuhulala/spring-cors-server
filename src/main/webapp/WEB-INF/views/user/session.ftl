@@ -5,9 +5,13 @@
     <title>session</title>
 </head>
 <body>
-    <form action="/session" method="post">
-        <input type="text" name="attributeName">
-        <input type="text" name="attributeValue">
+
+    <form action="/login" method="post">
+        <div>
+            ${error!}
+        </div>
+        <input type="text" name="username" value="${username!}">
+        <input type="text" name="password">
         <input type="submit">
     </form>
 </body>

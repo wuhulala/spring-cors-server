@@ -7,9 +7,9 @@ import org.springframework.session.web.context.AbstractHttpSessionApplicationIni
  * @date 2016-10-19
  * @description
  */
-public class Initializer extends AbstractHttpSessionApplicationInitializer {
+public class SpringSessionInitializer extends AbstractHttpSessionApplicationInitializer {
 
-    public Initializer() {
+    public SpringSessionInitializer() {
         super(SpringSessionConfig.class);
     }
 }

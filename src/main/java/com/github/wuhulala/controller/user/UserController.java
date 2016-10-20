@@ -18,10 +18,6 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    @RequestMapping(value = "/")
-    public String index(){
-        return "user/session";
-    }
 
     @RequestMapping(value = "/home")
     public String home(Model model) {
