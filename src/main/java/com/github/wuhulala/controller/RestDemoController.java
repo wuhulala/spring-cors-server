@@ -8,9 +8,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author xueaohui
+ * @author wuhulala
+ *
+ * <p>
+ *     <code>@CrossOrigin</code> 里面的value必须是 协议（http/https）：ip(或者域名)：port
+ * </p>
  */
-@CrossOrigin("http://127.0.0.1")
+@CrossOrigin("https://localhost")
 @RestController
 @RequestMapping("/api")
 public class RestDemoController {
